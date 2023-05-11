@@ -164,10 +164,12 @@ const Location: Template<TemplateRenderProps> = ({
             timezone={timezone}
           ></BookingBar>
           <div className="relative">
-            <Image
-              image={photoGallery[0]}
-              style={{ height: "100vh-25px" }}
-            ></Image>
+            {photoGallery && (
+              <Image
+                image={photoGallery[0]}
+                style={{ height: "100vh-25px" }}
+              ></Image>
+            )}
             <div className="absolute right-10 top-1/2 w-1/4 border p-4">
               {description}
             </div>

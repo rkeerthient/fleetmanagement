@@ -50,7 +50,9 @@ const Carousel_Locations = (props: any) => {
             <div className="textClass flex-col flex justify-between leading-6 font-normal">
               <div className=" text-left text-sm">
                 <div className="flex flex-col h-28">
-                  <Image image={item.logo} className="!w-16"></Image>
+                  {item.logo && (
+                    <Image image={item.logo} className="!w-16"></Image>
+                  )}{" "}
                   <div className="mt-4 font-semibold ">
                     {item.name.toUpperCase()}
                   </div>

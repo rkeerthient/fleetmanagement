@@ -30,7 +30,6 @@ import {
 } from "@heroicons/react/24/solid";
 import Hours from "../components/hours";
 import RTF from "../components/RTF";
-import { log } from "console";
 import Carousel_Locations from "../components/Carousel_Locations";
 import StaticMap from "../components/static-map";
 
@@ -42,6 +41,7 @@ export const config: TemplateConfig = {
     $id: "my-stream-id-2",
     filter: {
       entityTypes: ["healthcareProfessional"],
+      // entityIds: ["5677445636117464457"],
     }, // Specifies the exact data that each generated document will contain. This data is passed in
     // directly as props to the default exported function.
     fields: [
@@ -168,7 +168,7 @@ const Professional: Template<TemplateRenderProps> = ({
       <PageLayout _site={_site}>
         <div className="centered-container">
           <div className="section">
-            {geocodedCoordinate && (
+            {geocodedCoordinate.latitude && geocodedCoordinate.longitude && (
               <StaticMap
                 latitude={geocodedCoordinate.latitude}
                 longitude={geocodedCoordinate.longitude}
@@ -176,7 +176,7 @@ const Professional: Template<TemplateRenderProps> = ({
             )}
             <div className="grid grid-cols-3 px-4 mt-6">
               <div className="w-2/3 h-1/2">
-                <Image image={headshot}></Image>
+                {headshot && <Image image={headshot} />}
               </div>
               <div>
                 <dd className="mt-3 mx-auto font-bold text-xl">{name}</dd>
