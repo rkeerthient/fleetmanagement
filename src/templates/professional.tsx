@@ -41,7 +41,7 @@ export const config: TemplateConfig = {
     $id: "my-stream-id-2",
     filter: {
       entityTypes: ["healthcareProfessional"],
-      // entityIds: ["5677445636117464457"],
+      // entityIds: ["emmy-estenoz"],
     }, // Specifies the exact data that each generated document will contain. This data is passed in
     // directly as props to the default exported function.
     fields: [
@@ -168,14 +168,12 @@ const Professional: Template<TemplateRenderProps> = ({
       <PageLayout _site={_site}>
         <div className="centered-container">
           <div className="section">
-            {geocodedCoordinate &&
-              geocodedCoordinate.latitude &&
-              geocodedCoordinate.longitude && (
-                <StaticMap
-                  latitude={geocodedCoordinate.latitude}
-                  longitude={geocodedCoordinate.longitude}
-                ></StaticMap>
-              )}
+            {geocodedCoordinate && (
+              <StaticMap
+                latitude={geocodedCoordinate.latitude}
+                longitude={geocodedCoordinate.longitude}
+              ></StaticMap>
+            )}
             <div className="grid grid-cols-3 px-4 mt-6">
               <div className="w-2/3 h-1/2">
                 {headshot && <Image image={headshot} />}
@@ -212,20 +210,26 @@ const Professional: Template<TemplateRenderProps> = ({
                   </span>
                 </dd>
               </div>
-              <div>
-                <Hours hours={hours} title="Operational Hours"></Hours>
+              {hours && (
+                <div>
+                  <Hours hours={hours} title="Operational Hours"></Hours>
+                </div>
+              )}
+            </div>
+            {c_richTextDescription && (
+              <div className="mt-4">
+                <div className="my-4 text-3xl font-bold">About me:</div>
+                <RTF>{c_richTextDescription}</RTF>
               </div>
-            </div>
-            <div className="mt-4">
-              <div className="my-4 text-3xl font-bold">About me:</div>
-              <RTF>{c_richTextDescription}</RTF>
-            </div>
-            <div className="mt-4">
-              <div className="my-4 text-3xl font-bold">Locations</div>
-              <Carousel_Locations
-                data={c_relatedFacilities}
-              ></Carousel_Locations>
-            </div>
+            )}
+            {c_relatedFacilities && (
+              <div className="mt-4">
+                <div className="my-4 text-3xl font-bold">Locations</div>
+                <Carousel_Locations
+                  data={c_relatedFacilities}
+                ></Carousel_Locations>
+              </div>
+            )}
           </div>
         </div>
       </PageLayout>
