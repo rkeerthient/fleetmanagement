@@ -167,10 +167,12 @@ const Professional: Template<TemplateRenderProps> = ({
       <PageLayout _site={_site}>
         <div className="centered-container">
           <div className="section">
-            <StaticMap
-              latitude={geocodedCoordinate.latitude}
-              longitude={geocodedCoordinate.longitude}
-            ></StaticMap>
+            {geocodedCoordinate && (
+              <StaticMap
+                latitude={geocodedCoordinate.latitude}
+                longitude={geocodedCoordinate.longitude}
+              ></StaticMap>
+            )}
             <div className="grid grid-cols-3 px-4 mt-6">
               <div className="w-2/3 h-1/2">
                 <Image image={headshot}></Image>
