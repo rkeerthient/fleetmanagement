@@ -223,7 +223,7 @@ const Professional: Template<TemplateRenderProps> = ({
               </div>
             )}
             {c_relatedFacilities && (
-              <div className="mt-4">
+              <div className="mt-4 location">
                 <div className="my-4 text-3xl font-bold">Locations</div>
                 <Carousel_Locations
                   data={c_relatedFacilities}

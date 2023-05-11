@@ -46,7 +46,7 @@ const Carousel_Locations = (props: any) => {
     <Slider {...settings}>
       {data &&
         data.map((item: any, index: any) => (
-          <div key={index} className="p-4 border flex flex-row">
+          <div key={index} className="p-4 border flex flex-row ">
             <div className="textClass flex-col flex justify-between leading-6 font-normal">
               <div className=" text-left text-sm">
                 <div className="flex flex-col h-28">
