@@ -22,6 +22,8 @@ import * as React from "react";
 import PageLayout from "../components/page-layout";
 import "../index.css";
 import RTF from "../components/RTF";
+import Services_RTF from "../components/Services_RTF";
+import SubTopics from "../components/SubTopics";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -33,7 +35,17 @@ export const config: TemplateConfig = {
       entityTypes: ["ce_service"],
     }, // Specifies the exact data that each generated document will contain. This data is passed in
     // directly as props to the default exported function.
-    fields: ["id", "uid", "meta", "name", "richTextDescription", "slug"],
+    fields: [
+      "id",
+      "uid",
+      "meta",
+      "name",
+      "richTextDescription",
+      "slug",
+      "c_subTopics.name",
+      "c_subTopics.description",
+      "c_subTopics.slug",
+    ],
     // The entity language profiles that documents will be generated for.
     localization: {
       locales: ["en"],
@@ -107,16 +119,21 @@ const Service: Template<TemplateRenderProps> = ({
   path,
   document,
 }) => {
-  const { _site, name, richTextDescription } = document;
+  const { _site, name, richTextDescription, c_subTopics } = document;
   return (
     <>
       <PageLayout _site={_site}>
         <div className="centered-container">
           <div className="section">
-            <div className="text-3xl font-bold text-center">{name}</div>
+            <h1 className="text-3xl font-medium text-gray-700">{name}</h1>
             <div className="mt-4">
-              <RTF>{richTextDescription}</RTF>
+              <Services_RTF>{richTextDescription}</Services_RTF>
             </div>
+            {c_subTopics && (
+              <div className="mt-4">
+                <SubTopics data={c_subTopics} name={name}></SubTopics>
+              </div>
+            )}
           </div>
         </div>
       </PageLayout>

@@ -1,10 +1,22 @@
 {
   "$id": "site-entity",
   "filter": {
-    "entityIds": ["7089236598532783488"]
+    "entityIds": ["site-entity"]
   },
   "source": "knowledgeGraph",
-  "fields": ["name"],
+  "fields": [
+    "name",
+    "c_logoURL",
+    "c_accessibilityDescription",
+    "c_footer",
+    "c_header",
+    "c_relatedFacility.c_offeredServices.name",
+    "c_relatedFacility.c_offeredServices.slug",
+    "c_relatedFacility.hours",
+    "c_relatedFacility.address",
+    "c_relatedFacility.mainPhone",
+    "c_relatedFacility.timezone"
+  ],
   "localization": {
     "locales": ["en"],
     "primary": false

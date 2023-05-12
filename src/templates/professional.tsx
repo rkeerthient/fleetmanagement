@@ -32,6 +32,7 @@ import Hours from "../components/hours";
 import RTF from "../components/RTF";
 import Carousel_Locations from "../components/Carousel_Locations";
 import StaticMap from "../components/static-map";
+import Services_RTF from "../components/Services_RTF";
 
 /**
  * Required when Knowledge Graph data is used for a template.

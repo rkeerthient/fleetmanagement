@@ -46,19 +46,21 @@ const Carousel_Services = (props: any) => {
         data.map(
           (item: any, index: any) =>
             item.description && (
-              <>
-                <div className="flex flex-col border p-4" key={index}>
-                  <div className="h-24 text-bold flex justify-center items-center my-auto text-xl font-bold">
+              <span key={index}>
+                <div className="flex flex-col border p-4">
+                  <div className="h-24 text-bold flex justify-center items-center my-auto text-2xl font-base text-gray-600">
                     {item.name}
                   </div>
-                  <div className="h-48 text-sm">{item.description}</div>
+                  <div className="h-48 text-sm text-gray-600">
+                    {item.description}
+                  </div>
                   <a href={item.slug}>
-                    <div className="mt-4 border p-4 bg-blue-300 text-white w-fit mx-auto">
-                      Learn more
+                    <div className="mt-4 border rounded-full py-2 px-4 bg-gray-600 text-white w-fit mx-auto hover:bg-white hover:text-gray-600 hover:border-gray-600">
+                      Read more
                     </div>
                   </a>
                 </div>
-              </>
+              </span>
             )
         )}
     </Slider>

@@ -157,12 +157,6 @@ const Location: Template<TemplateRenderProps> = ({
     <>
       <PageLayout _site={_site}>
         <div>
-          <BookingBar
-            address={address}
-            mainPhone={mainPhone}
-            hours={hours}
-            timezone={timezone}
-          ></BookingBar>
           <div className="relative">
             {photoGallery && (
               <Image
@@ -170,39 +164,46 @@ const Location: Template<TemplateRenderProps> = ({
                 style={{ height: "100vh-25px" }}
               ></Image>
             )}
-            <div className="absolute right-10 top-1/2 w-1/4 border p-4">
-              {description}
+            <div className="absolute right-40 top-1/4 w-1/4 border border-gray-600 border-b-4 p-4">
+              <div className="font-semibold text-2xl mb-2">
+                {name} <br /> {address.city}, {address.region}
+              </div>
+              <div className="text-lg"> {description}</div>
             </div>
           </div>
         </div>
         <div className="centered-container">
           <div className="section">
+            <div className="my-8 font-base text-center text-3xl text-gray-600">
+              Featured Services
+            </div>
             <div className="grid grid-cols-3 gap-4">
               {c_featuredServices &&
                 c_featuredServices.map(
                   (item: any, index: any) =>
                     item.description && (
-                      <>
-                        <div className="flex flex-col border p-4" key={index}>
-                          <div className="h-24 text-bold flex justify-center items-center my-auto text-xl font-bold">
+                      <span key={index}>
+                        <div className="flex flex-col border p-4">
+                          <div className="h-24 text-bold flex justify-center items-center my-auto text-2xl font-base text-gray-600">
                             {item.name}
                           </div>
-                          <div>{item.description}</div>
+                          <div className="text-gray-500">
+                            {item.description}
+                          </div>
                           <a href={item.slug}>
-                            <div className="mt-4 border p-4 bg-blue-300 text-white w-fit mx-auto">
-                              Learn more
+                            <div className="mt-4 border rounded-full py-2 px-4 bg-gray-600 text-white w-fit mx-auto hover:bg-white hover:text-gray-600 hover:border-gray-600">
+                              Read more
                             </div>
                           </a>
                         </div>
-                      </>
+                      </span>
                     )
                 )}
             </div>
-
             <div className="mt-4 grid grid-cols-2 gap-4">
               {paymentOptions && (
                 <div className="flex flex-col">
-                  <div className="my-4 font-medium text-center text-xl">
+                  <div className="my-8 font-base text-center text-3xl text-gray-600">
                     Payments options
                   </div>
                   <div className="flex flex-row flex-wrap gap-16 border-r-2">
@@ -219,8 +220,8 @@ const Location: Template<TemplateRenderProps> = ({
               )}
               {insuranceAccepted && (
                 <div className="flex flex-col">
-                  <div className="my-4 font-medium text-center text-xl">
-                    Insurance Accepted{" "}
+                  <div className="my-8 font-base text-center text-3xl text-gray-600">
+                    Insurance accepted
                   </div>
                   <div className="flex flex-row flex-wrap gap-8">
                     {insuranceAccepted.map((item: any, index: any) => (
@@ -246,52 +247,20 @@ const Location: Template<TemplateRenderProps> = ({
                 </div>
               )}
             </div>
-
             <div className="mt-8">
-              <div className="my-4 font-medium text-center text-xl">
+              <div className="my-8 font-base text-center text-3xl text-gray-600">
                 Meet our doctors
               </div>
               <Doctors data={c_relatedDoctors}></Doctors>
             </div>
           </div>
         </div>
-        <div className="mt-8">
-          <div className="my-4 font-medium text-center text-xl">
+        <div>
+          <div className="my-8 font-base text-center text-3xl text-gray-600">
             Services offered
           </div>
           <Carousel_Services data={c_offeredServices}></Carousel_Services>
         </div>
-        {/* <Banner name={name} address={address} openTime={openTime}>
-          <div className="bg-white h-40 w-1/5 flex items-center justify-center text-center flex-col space-y-4 rounded-lg">
-            <div className="text-black text-base">Visit Us Today!</div>
-            <Cta
-              buttonText="Get Directions"
-              url="http://google.com"
-              style="primary-cta"
-            />
-          </div>
-        </Banner>
-        <div className="centered-container">
-          <div className="section">
-            <div className="grid grid-cols-3 gap-x-10 gap-y-10">
-              <div className="bg-gray-100 p-5 space-y-12">
-                <Contact address={address} phone={mainPhone}></Contact>
-                {services && <List list={services}></List>}
-              </div>
-              <div className="col-span-2 pt-5 space-y-10">
-                <div>
-                  {hours && <Hours title={"Restaurant Hours"} hours={hours} />}
-                </div>
-                {geocodedCoordinate && (
-                  <StaticMap
-                    latitude={geocodedCoordinate.latitude}
-                    longitude={geocodedCoordinate.longitude}
-                  ></StaticMap>
-                )}
-              </div>
-            </div>
-          </div>
-        </div> */}
       </PageLayout>
     </>
   );
