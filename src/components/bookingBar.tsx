@@ -37,17 +37,19 @@ function BookingBar(props: bookingBarProps) {
           <div className="text-gray-600">Call us today!</div>
         </div>
       </div>
-      <div className="items-center flex flex-row gap-4">
-        <div className="p-2 border-gray-300 border-2">
-          <BiTime />
-        </div>
-        <div className="flex flex-col">
-          <div>Opening Hours</div>
-          <div>
-            <HoursText hours={hours} timeZone={timezone} />
+      {hours && (
+        <div className="items-center flex flex-row gap-4">
+          <div className="p-2 border-gray-300 border-2">
+            <BiTime />
+          </div>
+          <div className="flex flex-col">
+            <div>Opening Hours</div>
+            <div>
+              <HoursText hours={hours} timeZone={timezone} />
+            </div>
           </div>
         </div>
-      </div>
+      )}
       <div className="items-center flex flex-row gap-4">
         <div className="p-2 border-gray-300 border-2">
           <AiOutlineCalendar />
